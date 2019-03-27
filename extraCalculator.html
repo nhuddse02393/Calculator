@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            text-align: right;
+            width: 205px;
+        }
+
+        button{
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<table id="calculator">
+    <tr>
+        <td align="center"><input id="Temp" type="text" readonly></td>
+    </tr>
+    <tr>
+        <td align="center"><input id="Main" type="text" align="right" autofocus></td>
+    </tr>
+    <tr>
+        <td>
+            <table id="tableOfNum">
+                <tr>
+                    <td><button id="numAC" onclick="pushNumAC()">AC</button></td>
+                    <td><button id="numLeft" onclick="">(</button></td>
+                    <td><button id="numRight" onclick="">)</button></td>
+                    <td><button id="perc" onclick="calculate('%')">%</button></td>
+                </tr>
+                <tr>
+                    <td><button id="num7" onclick="pushNum(7)">7</button></td>
+                    <td><button id="num8" onclick="pushNum(8)">8</button></td>
+                    <td><button id="num9" onclick="pushNum(9)">9</button></td>
+                    <td><button id="div" onclick="calculate('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button id="num4" onclick="pushNum(4)">4</button></td>
+                    <td><button id="num5" onclick="pushNum(5)">5</button></td>
+                    <td><button id="num6" onclick="pushNum(6)">6</button></td>
+                    <td><button id="mul" onclick="calculate('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button id="num1" onclick="pushNum(1)">1</button></td>
+                    <td><button id="num2" onclick="pushNum(2)">2</button></td>
+                    <td><button id="num3" onclick="pushNum(3)">3</button></td>
+                    <td><button id="sub" onclick="calculate('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button id="num0" onclick="pushNum(0)">0</button></td>
+                    <td><button id="numDot" onclick="pushNum('.')">.</button></td>
+                    <td><button id="res" onclick="res()">=</button></td>
+                    <td><button id="plus" onclick="calculate('+')">+</button></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<script>
+    let main = document.getElementById("Main").value;
+
+function pushNum(num){
+    main = main + num;
+    document.getElementById("Main").value = "" + main;
+}
+
+function pushNumAC() {
+    main = 0;
+    document.getElementById("Main").value = main;
+    document.getElementById("Temp").value = main;
+}
+
+function calculate(cal) {
+        main = main + "" + cal;
+        document.getElementById("Main").value = main;
+}
+
+
+function res() {
+    document.getElementById("Temp").value = "" + document.getElementById("Main").value + " =";
+    main = eval(document.getElementById("Main").value);
+    document.getElementById("Main").value = main;
+
+}
+
+</script>
+
+</body>
+</html>
